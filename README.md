@@ -12,6 +12,8 @@ NUMBER = DIGIT, {DIGIT};
 
 LETTER = ( a | ... | z | A | ... | Z ) ;
 
+STRING = """ (LETTER | DIGIT), {LETTER | DIGIT} """;
+
 IDENTIFIER = LETTER, { LETTER | DIGIT | "_" } ;
 
 DIGIT = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ;
