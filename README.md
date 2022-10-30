@@ -10,6 +10,10 @@ TYPE = String | i32;
 
 NUMBER = DIGIT, {DIGIT};
 
+LETTER = ( a | ... | z | A | ... | Z ) ;
+
+IDENTIFIER = LETTER, { LETTER | DIGIT | "_" } ;
+
 DIGIT = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ;
 
 BLOCK = "{" "}" | "{" {STATEMENT} "}";
