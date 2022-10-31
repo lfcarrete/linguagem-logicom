@@ -1,10 +1,16 @@
 # EBNF Linguagem
 
 IF = i;
+
 ELSE = e;
+
 WHILE = w;
+
 READ = r;
+
 PRINT = p;
+
+VAR = v;
 
 TYPE = String | i32;
 
@@ -13,6 +19,8 @@ NUMBER = DIGIT, {DIGIT};
 LETTER = ( a | ... | z | A | ... | Z ) ;
 
 STRING = """ (LETTER | DIGIT), {LETTER | DIGIT} """;
+
+FUNCTION = TYPE IDENTIFIER "(" [IDENTIFIER {"," IDENTIFIER}] ")" BLOCK;
 
 IDENTIFIER = LETTER, { LETTER | DIGIT | "_" } ;
 
