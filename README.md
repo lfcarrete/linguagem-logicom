@@ -12,15 +12,17 @@ PRINT = p;
 
 VAR = v;
 
+RETURN = r;
+
 TYPE = String | i32;
 
 NUMBER = DIGIT, {DIGIT};
 
 LETTER = ( a | ... | z | A | ... | Z ) ;
 
-STRING = """ (LETTER | DIGIT), {LETTER | DIGIT} """;
+STRING = """, (LETTER | DIGIT), {LETTER | DIGIT}, """;
 
-FUNCTION = TYPE IDENTIFIER "(" [IDENTIFIER {"," IDENTIFIER}] ")" BLOCK;
+FUNCTION = TYPE, IDENTIFIER, "(" [IDENTIFIER {"," IDENTIFIER}] ")", "{", { Statement }, RETURN, {DIGIT | IDENTIFIER } , ";" , "}";
 
 IDENTIFIER = LETTER, { LETTER | DIGIT | "_" } ;
 
