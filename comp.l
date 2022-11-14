@@ -41,7 +41,7 @@
 "p"  {return PRINT;}
 "v"  {return VAR;}
 
-[0-9]+ { yylval.num = atoi(yytext) ; return NUMBER;}
+[0-9]+ { return NUMBER;}
 ^[a-zA-Z]{1}[a-zA-Z0-9_]* {return IDENTIFIER;}
 [a-zA-Z0-9$&+,:;=?@#|'<>.^*()%!-]* {return STRING;}
 
