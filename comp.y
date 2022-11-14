@@ -2,10 +2,6 @@
 
 %}
 
-%union {
-    int num;
-    char sym;
-}
 
 %token LEFTKEY
 %token RIGHTKEY
