@@ -2,6 +2,7 @@
 
 %}
 
+%start block
 
 %token LEFTKEY
 %token RIGHTKEY
