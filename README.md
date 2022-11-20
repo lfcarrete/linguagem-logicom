@@ -6,7 +6,7 @@ ELSE = e;
 
 WHILE = w;
 
-READ = r;
+READ = l;
 
 PRINT = p;
 
@@ -14,13 +14,21 @@ VAR = v;
 
 RETURN = r;
 
-TYPE = String | i32;
+FN = f;
+
+TYPE = t | n;
 
 NUMBER = DIGIT, {DIGIT};
 
 LETTER = ( a | ... | z | A | ... | Z ) ;
 
 STRING = """, (LETTER | DIGIT), {LETTER | DIGIT}, """;
+
+PROGRAM = LAMBDA | DECLARATION ;
+
+DECLARATION = FN, IDENTIFIER, "(", [ DDECLARATIONOPTIONS ], ")", ["->", TYPE], BLOCK;
+
+DDECLARATIONOPTIONS = {IDENTIFIER, {"," IDENTIFIER}}, ":" TYPE, {",",  IDENTIFIER, {"," IDENTIFIER}}, ":" TYPE;
 
 FUNCTION = TYPE, IDENTIFIER, "(" [IDENTIFIER {"," IDENTIFIER}] ")", "{", { Statement }, RETURN, {DIGIT | IDENTIFIER } , ";" , "}";
 
@@ -36,7 +44,7 @@ EXPRESSION = TERM, {("+", "-", "||"), TERM};
 
 TERM = FACTOR, {("*", "/", "&&"), FACTOR}
 
-FACTOR = NUMBER | STRING | IDENTIFIER | ("+", "-", "!",) FACTOR | "(" RELEXPR ")" | READ  "(" ")";
+FACTOR = NUMBER | STRING | IDENTIFIER, ["(", [{RELEXPR ","}], ")"] | ("+", "-", "!",) FACTOR | "(" RELEXPR ")" | READ  "(" ")";
 
-STATEMENT = ";" | IDENTIFIER ";" | PRINT "(" RELEXPR ")" ";" | VAR IDENTIFIER {"," ,IDENTIFIER} ":" TYPE ";" | WHILE "(" RELEXPR ")" STATEMENT | BLOCK | IF "(" RELEXPR ")" STATEMENT [ELSE STATEMENT];
+STATEMENT = ";" | IDENTIFIER, "=", RELEXPR | RETURN, RELEXPR, ";" | IDENTIFIER, ["(", [{RELEXPR ","}], ")"], ";" | PRINT "(" RELEXPR ")" ";" | VAR IDENTIFIER {"," ,IDENTIFIER} ":" TYPE ";" | WHILE "(" RELEXPR ")" STATEMENT | BLOCK | IF "(" RELEXPR ")" STATEMENT [ELSE STATEMENT];
 
