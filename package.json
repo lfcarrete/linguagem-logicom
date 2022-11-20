@@ -1,0 +1,23 @@
+{
+  "name": "compilador-logica-comp",
+  "version": "1.0.0",
+  "description": "![git status](http://3.129.230.99/svg/lfcarrete/compilador-logica-comp/)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lfcarrete/compilador-logica-comp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lfcarrete/compilador-logica-comp/issues"
+  },
+  "homepage": "https://github.com/lfcarrete/compilador-logica-comp#readme",
+  "dependencies": {
+    "syncprompt": "^2.0.0"
+  }
+}
