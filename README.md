@@ -16,7 +16,7 @@ RETURN = r;
 
 FN = f;
 
-TYPE = t | n;
+TYPE = s | n;
 
 NUMBER = DIGIT, {DIGIT};
 
