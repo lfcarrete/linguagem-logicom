@@ -2,8 +2,6 @@
 
 %}
 
-%start block
-
 %token LEFTKEY
 %token RIGHTKEY
 %token LEFTPAR
@@ -30,6 +28,8 @@
 %token PRINT
 %token VAR
 %token RETURN
+%token FUNCTION
+%token ARROW
 
 %token IDENTIFIER
 %token LETTER
@@ -39,7 +39,9 @@
 
 %token EOL
 
-%type type params funcBlock function blockStatement block relexpressionOptions relexpression expressionOptions expression termOptions term factorOptions factor varOptions elseOption statement
+%type type factor-recursion program declaration declaration_oprions recuringIdentifier blockStatement block relexpressionOptions relexpression expressionOptions expression termOptions term factorOptions factor varOptions elseOption statement
+
+%start program
 
 %%
 
@@ -49,18 +51,29 @@ type:
     ;
 string: ASPAS STRING ASPAS;
 
+//PROGRAM
+program:
+    | declaration
+    ;
+
+//DECLARATION
+declaration: FUNCTION IDENTIFIER LEFTPAR declaration_oprions RIGHTPAR function_oprions block;
+
+
+declaration_oprions:
+    | recuringIdentifier DOISPONTOS type declaration_oprions
+    ;
+
+recuringIdentifier: IDENTIFIER
+    | VIRGULA recuringIdentifier
+    ;
+
+function_oprions: 
+    | ARROW type
+    ;
+
 // FUNCTION
-params:
-    | IDENTIFIER
-    | IDENTIFIER VIRGULA params
-    ;
 
-funcBlock: RETURN IDENTIFIER ENDOFSTATEMENT
-    | RETURN NUMBER ENDOFSTATEMENT
-    | statement funcBlock
-    ;
-
-function: type IDENTIFIER LEFTPAR params RIGHTPAR LEFTKEY funcBlock RIGHTKEY ENDOFSTATEMENT;
 
 //BLOCK
 blockStatement: statement
@@ -111,10 +124,16 @@ factorOptions:
     | NOT   
     ;
 
+factor-recursion: 
+    | LEFTPAR relexpression RIGHTPAR
+    | LEFTPAR RIGHTPAR
+    ;
+
+
 factor:
       NUMBER
     | string
-    | IDENTIFIER
+    | IDENTIFIER factor-recursion
     | factorOptions factor
     | LEFTPAR relexpression RIGHTPAR
     | READ LEFTPAR RIGHTPAR ENDOFSTATEMENT
@@ -132,7 +151,9 @@ elseOption:
 
 statement:
       ENDOFSTATEMENT
-    | IDENTIFIER ENDOFSTATEMENT
+    | IDENTIFIER EQUAL relexpression ENDOFSTATEMENT
+    | RETURN relexpression ENDOFSTATEMENT
+    | IDENTIFIER factor-recursion ENDOFSTATEMENT
     | PRINT LEFTPAR relexpression RIGHTPAR ENDOFSTATEMENT
     | VAR varOptions DOISPONTOS type ENDOFSTATEMENT
     | WHILE LEFTPAR relexpression RIGHTPAR statement

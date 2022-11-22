@@ -31,6 +31,7 @@
 "i32" {return I32;}
 ","  {return VIRGULA;}
 "\"" {return ASPAS;}
+"->" {return ARROW;}
 
 
 "ret" {return RETURN;}
@@ -40,6 +41,7 @@
 "r"  {return READ;}
 "p"  {return PRINT;}
 "v"  {return VAR;}
+"f"  {return FUNCTION;}
 
 [0-9]+ { return NUMBER;}
 ^[a-zA-Z]{1}[a-zA-Z0-9_]* {return IDENTIFIER;}

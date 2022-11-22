@@ -35,8 +35,6 @@ DECLARATION = FN, IDENTIFIER, "(", [ DDECLARATIONOPTIONS ], ")", ["->", TYPE], B
 
 DDECLARATIONOPTIONS = {IDENTIFIER, {"," IDENTIFIER}}, ":" TYPE, {",",  IDENTIFIER, {"," IDENTIFIER}}, ":" TYPE;
 
-FUNCTION = TYPE, IDENTIFIER, "(" [IDENTIFIER {"," IDENTIFIER}] ")", "{", { Statement }, RETURN, {DIGIT | IDENTIFIER } , ";" , "}";
-
 IDENTIFIER = LETTER, { LETTER | DIGIT | "_" } ;
 
 DIGIT = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ;
@@ -51,5 +49,5 @@ TERM = FACTOR, {("*", "/", "&&"), FACTOR}
 
 FACTOR = NUMBER | STRING | IDENTIFIER, ["(", [{RELEXPR ","}], ")"] | ("+", "-", "!",) FACTOR | "(" RELEXPR ")" | READ  "(" ")";
 
-STATEMENT = ";" | IDENTIFIER, "=", RELEXPR | RETURN, RELEXPR, ";" | IDENTIFIER, ["(", [{RELEXPR ","}], ")"], ";" | PRINT "(" RELEXPR ")" ";" | VAR IDENTIFIER {"," ,IDENTIFIER} ":" TYPE ";" | WHILE "(" RELEXPR ")" STATEMENT | BLOCK | IF "(" RELEXPR ")" STATEMENT [ELSE STATEMENT];
+STATEMENT = ";" | IDENTIFIER, "=", RELEXPR ";"| RETURN, RELEXPR, ";" | IDENTIFIER, ["(", [{RELEXPR ","}], ")"], ";" | PRINT "(" RELEXPR ")" ";" | VAR IDENTIFIER {"," ,IDENTIFIER} ":" TYPE ";" | WHILE "(" RELEXPR ")" STATEMENT | BLOCK | IF "(" RELEXPR ")" STATEMENT [ELSE STATEMENT];
 
