@@ -1,3 +1,8 @@
+# Compilador Redu
+### Computação Reduzida
+
+## [Apresentando a Linguagem (PPT)](https://docs.google.com/presentation/d/1NBikOEhyn8o17XNUf3TBf0SAmsichPXJaP98Xs-HItw/edit?usp=sharing)
+
 # EBNF Linguagem
 
 IF = i;
