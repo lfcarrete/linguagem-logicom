@@ -817,7 +817,7 @@ class Parser {
                 Parser.tokenizer.selectNext();
                 if(Parser.tokenizer.next.type === "PARRIGHT"){
                     Parser.tokenizer.selectNext();
-                    return new FuncCall(identName, []);
+                    return new FuncCall(identifier, []);
                 } else {
                     var arg = [Parser.relExpression()];
                     while(Parser.tokenizer.next.type === "VIRGULA"){
@@ -825,7 +825,7 @@ class Parser {
                         arg.push(Parser.relExpression());
                     }
                     if(Parser.tokenizer.next.type === "PARRIGHT"){
-                        return new FuncCall(identName, arg);
+                        return new FuncCall(identifier, arg);
                     } else throw "FALTAAA";
 
                 }

@@ -1,0 +1,14 @@
+f soma(x: n, y: n) -> n{ 
+    v a: n; 
+    a = x + y; 
+    p(a); 
+    r a; 
+} 
+f Main() { 
+    v a: n; 
+    v b: n; 
+    a = 3; 
+    b = soma(a, 4); 
+    p(a); 
+    p(b); 
+}

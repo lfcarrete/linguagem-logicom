@@ -1,0 +1,25 @@
+//Soma todos nums positivos
+f somaNums(x:n) -> n {
+    v way: n;
+    v soma: n;
+    soma = 0;
+
+    p("Para parar escreva qualquer num < 1");
+    way = l();
+
+    w(way > 0){
+        soma = soma + way;
+        way = l();
+    }
+    
+    r soma;
+}
+ 
+f Main() { 
+    v result: n;
+    v in: n;
+    in = 1;
+    
+    result = somaNums(in);
+    p(result);
+}

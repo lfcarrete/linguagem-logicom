@@ -1,0 +1,22 @@
+f calcPow(x: n , y: n) -> n{
+    v cont: n;
+    v res: n;
+    res = 1;
+    cont = 0;
+
+    w(cont<y){
+        res = x * res;
+        cont = cont + 1;
+    }
+    r res;
+}
+f Main(){
+    v base : n;
+    v pow : n;
+    v res : n;
+    base = 10;
+    pow = 2;
+    res = calcPow(base, pow);
+
+    p(res);
+}
